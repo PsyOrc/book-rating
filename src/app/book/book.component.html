@@ -2,18 +2,17 @@
   <div class="card-body bg-light">
     <img class="thumbnail float-right"
   src="https://api.angular.schule/avatar/{{ book.rating }}">
-  <div class="card-title">
+  <div class="card-title" set>
     <h2>
       {{ book.title }}
-      <span class="badge badge-secondary">{{ book.rating }}</span>
+      <span>{{ starRating }}</span>
     </h2>
   </div>
-
     <p>
       {{ book.description }}
     </p>
-    <button class="btn btn-secondary mr-2">-</button>
-    <button class="btn btn-primary mr-2">+</button>
+    <button (click)="decrease()" class="btn btn-secondary mr-2">-</button>
+    <button (click)="increase()" class="btn btn-primary mr-2">+</button>
 
   </div>
 </div>

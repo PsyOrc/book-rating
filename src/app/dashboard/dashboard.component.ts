@@ -24,15 +24,14 @@ export class DashboardComponent implements OnInit {
       isbn: '002',
       title: 'ruby',
       description: 'doll',
-      rating: 2
+      rating: 3
     },
     {
-      isbn: '0',
+      isbn: '1',
       title: 'Python',
       description: 'genial',
-      rating: 0
+      rating: 1
     },
-  ];
+  ].sort((a, b) => (a.rating < b.rating) ? 1 : -1);
   }
-
 }
