@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'br-dashboard',
@@ -33,7 +32,7 @@ export class DashboardComponent implements OnInit {
       description: 'genial',
       rating: 1000
     },
-  ]
+  ];
   }
 
 }
