@@ -27,10 +27,10 @@ export class DashboardComponent implements OnInit {
       rating: 2
     },
     {
-      isbn: '003',
+      isbn: '0',
       title: 'Python',
       description: 'genial',
-      rating: 1000
+      rating: 0
     },
   ];
   }
