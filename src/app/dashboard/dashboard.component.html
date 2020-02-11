@@ -1,5 +1,11 @@
-<li *ngFor="let book of books">
-  <b>
-    {{book}}
-  </b>
-</li>
+<br-book
+  *ngFor="let bookPos of books"
+  [book]=bookPos
+></br-book>
+<!--
+<table *ngFor="let book of books">
+  <tr> {{ book.title}}
+    <th>{{ book.isbn}}</th>
+    <th>{{ book.description}}</th>
+    <th>{{ book.rating}}</th>
+  </tr> -->
