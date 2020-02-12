@@ -1,0 +1,28 @@
+{
+  "1112345": { "isbn": "1112345",
+    "title": "angular",
+    "description": "Angular das Buch",
+    "rating": 5
+  },
+  "21344": { "isbn": "21344",
+    "title": "Python",
+    "description": "Python for All",
+    "rating": 4
+  },
+  "00123254365461": { "isbn": "00123254365461",
+    "title": "C#",
+    "description": "Sollte man Wissen",
+    "rating": 3
+  },
+  "1253624514": { "isbn": "1253624514",
+    "title": "Ruby",
+    "description": "keiner will es machen",
+    "rating": 1
+  },
+  "15656791121": { "isbn": "15656791121",
+    "title": "C++",
+    "description": "SPS Müll",
+    "rating": 2
+  }
+
+}

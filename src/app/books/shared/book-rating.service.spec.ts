@@ -2,7 +2,7 @@ import { BookRatingService } from './book-rating.service';
 import { Book } from './book';
 import { Title } from '@angular/platform-browser';
 
-fdescribe('BookRatingService', () => {
+describe('BookRatingService', () => {
   // Arrange
   let service: BookRatingService;
   let book: Book;

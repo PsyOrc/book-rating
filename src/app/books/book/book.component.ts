@@ -12,10 +12,6 @@ export class BookComponent {
   @Output() rateDown = new EventEmitter<Book>();
   @Output() rateUp = new EventEmitter<Book>();
 
-  get Stars() {
-    return new Array(this.book.rating);
-  }
-
   doRateDown() {
     this.rateDown.emit(this.book);
   }
