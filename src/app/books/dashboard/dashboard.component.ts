@@ -34,4 +34,12 @@ export class DashboardComponent implements OnInit {
     },
   ].sort((a, b) => (a.rating < b.rating) ? 1 : -1);
   }
+
+  doRateDown(book: Book) {
+    
+  }
+
+  doRateUp(book: Book) {
+
+  }
 }
