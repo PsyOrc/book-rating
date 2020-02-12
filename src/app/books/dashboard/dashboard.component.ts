@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -10,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   books: Book[];
 
-  constructor() { }
+  constructor(private br: BookRatingService) { }
 
   // ngOnInit(): void
   ngOnInit() {
@@ -32,14 +33,22 @@ export class DashboardComponent implements OnInit {
       description: 'genial',
       rating: 1
     },
-  ].sort((a, b) => (a.rating < b.rating) ? 1 : -1);
+  ];
   }
 
   doRateDown(book: Book) {
-    
+    const ratedBook = this.br.rateDown(book);
+    this.updateBook(ratedBook);
   }
 
   doRateUp(book: Book) {
+    const ratedBook = this.br.rateUp(book);
+    this.updateBook(ratedBook);
+  }
 
+  updateBook(ratedBook: Book) {
+    this.books = this.books
+      .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
+      .sort((a, b) => b.rating - a.rating);
   }
 }
