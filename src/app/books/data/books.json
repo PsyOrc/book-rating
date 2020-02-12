@@ -1,0 +1,35 @@
+{
+  "books":
+  [
+    { "isbn": "1112345",
+      "title": "angular",
+      "description": "Angular das Buch",
+      "rating": 5
+    },
+    { "isbn": "21344",
+      "title": "Python",
+      "description": "Python for All",
+      "rating": 4
+    },
+    { "isbn": "00123254365461",
+      "title": "C#",
+      "description": "Sollte man Wissen",
+      "rating": 3
+    },
+    { "isbn": "1253624514",
+      "title": "Ruby",
+      "description": "keiner will es machen",
+      "rating": 1
+    },
+    { "isbn": "99999",
+      "title": "C++",
+      "description": "SPS Müll",
+      "rating": 2
+    },
+    { "isbn": "15656791121",
+      "title": "Pepper Wutz",
+      "description": "Pepper geht Pappa auf den Sack",
+      "rating": 1
+    }
+  ]
+}
