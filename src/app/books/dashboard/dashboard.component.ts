@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import * as data from '../data/books.json';
-import { fstat } from 'fs';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush // Achtung Bug Provoziert
 })
 export class DashboardComponent implements OnInit {
 
-  private fs = require('fs');
   books: Book[];
   constructor(private br: BookRatingService) { }
 
