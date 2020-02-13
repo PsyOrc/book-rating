@@ -2,21 +2,22 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import * as data from '../data/books.json';
+import { BookStoreService } from 'src/app/book/shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush // Achtung Bug Provoziert
+  // changeDetection: ChangeDetectionStrategy.OnPush // Achtung Bug Provoziert
 })
 export class DashboardComponent implements OnInit {
 
   books: Book[];
-  constructor(private br: BookRatingService) { }
+  constructor(private br: BookRatingService, private bs: BookStoreService) { }
 
   // ngOnInit(): void
   ngOnInit() {
-    this.books = data.books;
+    this.bs.getBooks().subscribe(books => this.books = books);
   }
 
   doRateDown(book: Book) {
