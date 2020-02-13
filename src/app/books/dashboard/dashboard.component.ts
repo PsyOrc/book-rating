@@ -15,13 +15,7 @@ export class DashboardComponent implements OnInit {
 
   // ngOnInit(): void
   ngOnInit() {
-    this.books = [
-      { isbn: '1112345',
-        title: 'angular',
-        description: 'Angular das Buch',
-        rating: 5
-      },
-    ];
+    this.books = data.books;
   }
 
   doRateDown(book: Book) {
