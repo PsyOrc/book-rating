@@ -8,7 +8,7 @@ import { BookStoreService } from 'src/app/book/shared/book-store.service';
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush // Achtung Bug Provoziert
+  changeDetection: ChangeDetectionStrategy.OnPush // Achtung Bug Provoziert
 })
 export class DashboardComponent implements OnInit {
 
