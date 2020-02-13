@@ -19,11 +19,11 @@ export class CreateBookComponent {
 
     isInvalid(name: string) {
       const control = this.bookForm.get(name);
-      return control.touched && control.invalid;
+      return control.touched && control.invalid && !control.pristine;
     }
 
     hasError(name: string, code: string) {
       const control = this.bookForm.get(name);
-      return control.touched && control.hasError(code);
+      return control.touched && control.hasError(code) && control.pristine;
     }
 }
