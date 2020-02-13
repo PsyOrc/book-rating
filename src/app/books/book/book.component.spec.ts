@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookComponent } from './book.component';
+import { by, By } from 'protractor';
 
 describe('BookComponent', () => {
   let component: BookComponent;
