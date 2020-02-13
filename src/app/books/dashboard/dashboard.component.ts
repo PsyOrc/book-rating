@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import * as data from '../data/books.json';
-import { CreateBookComponent } from '../create-book/create-book.component';
+import { fstat } from 'fs';
 
 @Component({
   selector: 'br-dashboard',
@@ -11,6 +11,7 @@ import { CreateBookComponent } from '../create-book/create-book.component';
 })
 export class DashboardComponent implements OnInit {
 
+  private fs = require('fs');
   books: Book[];
   constructor(private br: BookRatingService) { }
 
