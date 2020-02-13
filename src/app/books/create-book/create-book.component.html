@@ -22,7 +22,7 @@
     <textarea formControlName="description" type="text" class="form-control" id="description"></textarea>
   </div>
 
-  <button [disabled]="bookForm.invalid" class="btn btn-primary mb-4" type="submit">
+  <button (click)="submitForm()" [disabled]="bookForm.invalid" class="btn btn-primary mb-4" type="submit">
     Erzeugen!
   </button>
 </form>

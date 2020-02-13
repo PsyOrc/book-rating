@@ -1,4 +1,5 @@
-<br-create-book></br-create-book>
+<br-create-book
+  (create)="doAddBook($event)"></br-create-book>
 <br-book
   *ngFor="let bookPos of books"
   [book]=bookPos
