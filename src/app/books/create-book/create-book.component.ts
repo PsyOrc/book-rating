@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CreateBookComponent {
 
     bookForm = new FormGroup({
-      isnb: new FormControl('', [
+      isbn: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ]),
@@ -17,4 +17,13 @@ export class CreateBookComponent {
       description: new FormControl(''),
     });
 
+    isInvalid(name: string) {
+      const control = this.bookForm.get(name);
+      return control.touched && control.invalid;
+    }
+
+    hasError(name: string, code: string) {
+      const control = this.bookForm.get(name);
+      return control.touched && control.hasError(code);
+    }
 }
