@@ -1,11 +1,14 @@
 <div class="card mb-4">
   <div class="card-body bg-light">
     <img class="thumbnail float-right"
-  src="{{ book.firstThumbnailUrl }}">
+  [src]="book.firstThumbnailUrl" width="200"> <!-- src="{{ book.firstThumbnailUrl }}"> -->
   <div class="card-title" set>
     <h2>
       {{ book.title | uppercase}}
-      {{'★★★★★' | slice:0:book.rating}}
+      <span class="badge badge-secondary">
+        {{'★★★★★' | slice:0:book.rating}}
+      </span>
+
     </h2>
   </div>
     <p>
