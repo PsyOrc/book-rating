@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observer, timer, Subscription, Observable } from 'rxjs';
-
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
@@ -36,6 +35,7 @@ export class BookDetailsComponent implements OnInit {
         clearTimeout(timeout);
       }
     });
+
     const sub = observable.subscribe(observer);
     setTimeout(() => sub.unsubscribe());
 
