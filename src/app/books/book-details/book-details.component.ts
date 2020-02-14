@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observer, timer, Subscription, Observable } from 'rxjs';
+import { of, Observer, timer, Subscription, Observable, concat } from 'rxjs';
+import { map, filter, reduce } from 'rxjs/operators';
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
@@ -16,30 +17,12 @@ export class BookDetailsComponent implements OnInit {
       paramMap => this.isbn = paramMap.get('isbn')
     );
 
-    const observer = {
-      next: s => console.log(s),
-      error: err => console.error(err),
-      complete: () => console.log('Complete')
-    };
-
-
-    const observable = new Observable(obs => {
-      obs.next('😇');
-      obs.next('🤩');
-      const timeout = setTimeout(() => obs.next('😎'), 1000);
-      setTimeout(() => obs.complete(), 2000);
-      // obs.error('Fehler!');
-
-      return () => {
-        console.log('Da hat einer unsubscribed');
-        clearTimeout(timeout);
-      }
-    });
-
-    const sub = observable.subscribe(observer);
-    setTimeout(() => sub.unsubscribe());
-
-    // const subcription = timer(0, 250).subscribe(console.log);
+    of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
+      map(x => x * 10), // multipliziert x * 10
+      filter(x => x > 30), // filtert alle zahlen unter 30 raus
+      reduce((x,y) => x + y), // summiert das ergebnis
+      map(x => '❤️'.repeat(x))
+    ).subscribe(console.log); // gibt x ❤️ aus
 
   }
 // http und actiatedRoute muss nicht unsubscribed werden
