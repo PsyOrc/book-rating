@@ -1,5 +1,5 @@
 <ng-container *ngIf="book$ | async as book; else loading">
-  <h2>Buch:
+  <h2>
     {{ book.title }}</h2>
 
     <p *ngIf="show">
@@ -16,3 +16,4 @@
 <p>book-details works!</p>
 
 <a routerLink="/books/9783864906466">Buch</a>
+<a routerLink="/books/9783864922206466">Error Buch</a>

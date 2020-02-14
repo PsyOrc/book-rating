@@ -14,12 +14,14 @@ export class BookDetailsComponent{
   show = false;
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
-    switchMap(isbn => this.bs.getSingleBook(isbn)),
-    catchError((err: HttpErrorResponse) => of({
-      isbn: '000',
-      title: 'Fehler beim laden von ' + err.statusText,
-      description: 'error'
-    }))
+    switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
+      catchError((err: HttpErrorResponse) => of({
+        isbn: '000',
+        title: 'Fehler beim laden von ' + err.url,
+        description: err.message
+      }))
+    )),
+
     );
 
 
