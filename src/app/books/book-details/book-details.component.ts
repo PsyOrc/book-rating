@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observer } from 'rxjs';
+import { of, Observer, timer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -10,7 +10,7 @@ import { of, Observer } from 'rxjs';
 export class BookDetailsComponent implements OnInit {
 
   isbn: string;
-
+  sub: Subscription;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,5 +24,13 @@ export class BookDetailsComponent implements OnInit {
       complete: () => console.log('Complete')
     };
     of('😇', '😎', '🤩').subscribe(observer);
+
+    this.sub = timer(0, 250).subscribe(console.log);
+
+  }
+// http und actiatedRoute muss nicht unsubscribed werden
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
