@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, share, shareReplay } from 'rxjs/operators';
+import { map, switchMap, share, shareReplay, catchError } from 'rxjs/operators';
 import { BookStoreService } from 'src/app/book/shared/book-store.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { of } from 'rxjs';
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
@@ -13,7 +15,11 @@ export class BookDetailsComponent{
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
     switchMap(isbn => this.bs.getSingleBook(isbn)),
-    shareReplay(1)
+    catchError((err: HttpErrorResponse) => of({
+      isbn: '000',
+      title: 'Fehler beim laden von ' + err.statusText,
+      description: 'error'
+    }))
     );
 
 
