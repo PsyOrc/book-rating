@@ -1,5 +1,17 @@
-<h2>Buch:
-  {{ (book$ | async)?.title }}</h2>
+<ng-container *ngIf="book$ | async as book; else loading">
+  <h2>Buch:
+    {{ book.title }}</h2>
+
+    <p *ngIf="show">
+      {{ book.description}}
+    </p>
+</ng-container>
+
+<ng-template #loading>
+  <h2>Bitte warten das Buch wird geladen</h2>
+</ng-template>
+
+<button class="btn btn-secondary" (click)="show = true">Mehr</button>
 
 <p>book-details works!</p>
 
