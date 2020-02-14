@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observer, timer, Subscription } from 'rxjs';
-import { takeUntil, takeWhile } from 'rxjs/operators';
+import { of, Observer, timer, Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -11,7 +10,6 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
 export class BookDetailsComponent implements OnInit {
 
   isbn: string;
-  alive = true;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,16 +22,26 @@ export class BookDetailsComponent implements OnInit {
       error: err => console.error(err),
       complete: () => console.log('Complete')
     };
-    of('😇', '😎', '🤩').subscribe(observer);
 
-    timer(0, 250).pipe(
-      takeWhile(() => this.alive))
-      .subscribe(console.log);
+
+    const observable = new Observable(obs => {
+      obs.next('😇');
+      obs.next('🤩');
+      const timeout = setTimeout(() => obs.next('😎'), 1000);
+      setTimeout(() => obs.complete(), 2000);
+      // obs.error('Fehler!');
+
+      return () => {
+        console.log('Da hat einer unsubscribed');
+        clearTimeout(timeout);
+      }
+    });
+    const sub = observable.subscribe(observer);
+    setTimeout(() => sub.unsubscribe());
+
+    // const subcription = timer(0, 250).subscribe(console.log);
 
   }
 // http und actiatedRoute muss nicht unsubscribed werden
 
-  ngOnDestroy() {
-    this.alive = false;
-  }
 }
