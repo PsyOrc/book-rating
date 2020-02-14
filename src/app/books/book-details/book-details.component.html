@@ -1,3 +1,6 @@
-<h2>Buch ISBN {{ isbn }}</h2>
+<h2>Buch:
+  {{ (book$ | async)?.title }}</h2>
+
 <p>book-details works!</p>
+
 <a routerLink="/books/9783864906466">Buch</a>
